@@ -12,7 +12,6 @@ export function Header() {
           </div>
           <span className="text-xl font-bold text-foreground">TechOps</span>
         </Link>
-
         <nav className="hidden md:flex items-center gap-6">
           <Link
             href="#features"
@@ -33,6 +32,12 @@ export function Header() {
             How It Works
           </Link>
           <Link
+            href="#contact"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Contact
+          </Link>
+          <Link
             href="https://fintellion.ai"
             target="_blank"
             rel="noopener noreferrer"
@@ -41,12 +46,10 @@ export function Header() {
             Our Company
           </Link>
         </nav>
-
         <div className="flex items-center gap-4">
-          <Button variant="ghost" className="hidden md:inline-flex">
-            Sign In
+          <Button asChild>
+            <Link href="#contact">Get Involved</Link>
           </Button>
-          <Button>Get Started</Button>
           <Button variant="ghost" size="icon" className="md:hidden">
             <Menu className="h-5 w-5" />
           </Button>
