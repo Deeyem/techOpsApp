@@ -43,13 +43,13 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Pricing
+                <Link href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors">
+                  How It Works
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Integrations
+                <Link href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Get Involved
                 </Link>
               </li>
             </ul>
@@ -65,21 +65,21 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  About
+                  About Fintellion
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Blog
+                <Link
+                  href="https://fintellion.ai/legal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Legal Notices
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Careers
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">
                   Contact
                 </Link>
               </li>
@@ -87,34 +87,38 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold text-foreground mb-4">Legal</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Privacy Policy
+            <h3 className="font-semibold text-foreground mb-4">Legal & Disclaimers</h3>
+            <div className="space-y-3 text-xs text-muted-foreground leading-relaxed">
+              <p>
+                <span className="font-semibold text-foreground">Pre-Launch Notice:</span> TechOps is in development by Fintellion LLC. Features subject to change.
+              </p>
+              <p>
+                <span className="font-semibold text-foreground">Disclaimers:</span> For informational purposes only. Not providing financial, legal, or professional advice.
+              </p>
+              <p>
+                <Link
+                  href="https://fintellion.ai/legal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline font-medium"
+                >
+                  Full Legal Notices →
                 </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Terms of Service
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Security
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Compliance
-                </Link>
-              </li>
-            </ul>
+              </p>
+              <p>
+                <span className="font-semibold text-foreground">Privacy:</span> Contact form data processed via Web3Forms for response purposes only.
+              </p>
+            </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border/40 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} TechOps. All rights reserved.</p>
+        <div className="mt-12 pt-8 border-t border-border/40">
+          <div className="text-center text-xs text-muted-foreground space-y-2">
+            <p>&copy; {new Date().getFullYear()} Fintellion LLC. All rights reserved.</p>
+            <p className="max-w-3xl mx-auto">
+              TechOps is a product of Fintellion LLC. The content on this site and its associated pages is for informational and educational purposes only.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

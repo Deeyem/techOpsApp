@@ -19,7 +19,7 @@ export default function Home() {
           <div className="flex items-center justify-center space-x-3">
             <Rocket className="w-5 h-5 text-amber-600 flex-shrink-0" />
             <p className="text-sm text-amber-900 text-center">
-              <span className="font-semibold">In Development:</span> AI-powered business operations platform for tech startups. Join the waitlist for early access.
+              Building AI-Powered Operations Management for Tech Startups. Launching 2026. Join us as an early partner or founding customer.
             </p>
           </div>
         </div>

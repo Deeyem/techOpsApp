@@ -15,12 +15,41 @@ export function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState("")
 
+  const getAutoResponse = (interest: string) => {
+    const baseMessage = `Hi ${formData.fullName},
+
+Thanks for your interest in Fintellion!
+
+A few quick notes about where we are:
+
+✨ Stage: Pre-launch concept, building our MVP
+💰 Funding: Currently bootstrapped, seeking angel investors
+🤝 Team: Seeking co-founders for equity partnership (no salary until funded)
+🚀 Timeline: Launching Q1-Q2 2026
+
+`
+    
+    let specificMessage = ""
+    
+    if (interest === "Technical Co-Founder" || interest === "Business Co-Founder") {
+      specificMessage = "We're looking for full-time commitment and equity-based partnership. Are you able to commit full-time without salary initially?\n\n"
+    } else if (interest === "Angel Investor") {
+      specificMessage = "We're planning to raise our first angel round in Q1 2026. Typical check sizes are $25K-$100K. Does this align with your investment thesis?\n\n"
+    } else {
+      specificMessage = "Tell us more about how you'd like to be involved!\n\n"
+    }
+    
+    return baseMessage + specificMessage + "I'll review your submission and get back to you within 48 hours.\n\nBest,\nFintellion Team"
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     setError("")
     
     try {
+      const autoResponseMessage = getAutoResponse(formData.interest)
+      
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
@@ -33,7 +62,10 @@ export function ContactForm() {
           email: formData.email,
           interest: formData.interest,
           message: formData.message,
-          subject: `New TechOps Interest: ${formData.interest}`,
+          subject: `New Fintellion Interest: ${formData.interest} - ${formData.fullName}`,
+          from_name: "Fintellion TechOps",
+          replyto: formData.email,
+          autoresponse: autoResponseMessage,
         }),
       })
 
@@ -41,7 +73,6 @@ export function ContactForm() {
       
       if (result.success) {
         setIsSubmitted(true)
-        // Reset form after 5 seconds
         setTimeout(() => {
           setIsSubmitted(false)
           setFormData({
@@ -69,7 +100,7 @@ export function ContactForm() {
         </div>
         <h3 className="text-2xl font-bold text-foreground mb-2">Thank you!</h3>
         <p className="text-muted-foreground">
-          We've received your submission and will get back to you within 48 hours.
+          We've received your submission and sent you an email with next steps. We'll get back to you within 48 hours.
         </p>
       </div>
     )
@@ -136,23 +167,23 @@ export function ContactForm() {
               className="w-full px-4 py-2 bg-background border border-border rounded-md text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="">Select your interest...</option>
-              <option value="Investor">💰 Investor</option>
-              <option value="Technical Co-Founder">💻 Technical Co-Founder</option>
-              <option value="Investment Advisor">📊 Investment Advisor (Series 65/Fiduciary)</option>
-              <option value="Strategic Partner">🤝 Strategic Partner</option>
-              <option value="Other Expertise">✨ Other Expertise</option>
+              <option value="Technical Co-Founder">💻 Technical Co-Founder (Equity partnership - building together full-time)</option>
+              <option value="Business Co-Founder">📊 Business Co-Founder (Equity partnership - building together full-time)</option>
+              <option value="Angel Investor">💰 Angel Investor (Providing seed capital for development)</option>
+              <option value="Other Opportunity">🌟 Other Opportunity (Tell me about your interest!)</option>
             </select>
           </div>
 
           <div className="space-y-2">
             <label htmlFor="message" className="block text-sm font-medium text-foreground">
-              Message (Optional)
+              Message <span className="text-red-500">*</span>
             </label>
             <textarea
               id="message"
+              required
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              placeholder="Tell us more about your interest..."
+              placeholder="Tell us about your background and why you're interested in Fintellion..."
               rows={4}
               className="w-full px-4 py-2 bg-background border border-border rounded-md text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none"
             />
